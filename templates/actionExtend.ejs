@@ -1,0 +1,11 @@
+
+<% for (let i=0; i<funcnames.length; i++) {-%>
+  <%=funcnames[i]%>: '<%=typenames[i]%>',
+<% } -%>
+
+<%_ for (let i=0; i<funcnames.length; i++) {-%>
+  <%=funcnames[i]%>: (payload?: any) => ({
+    type: <%=name%>Const.<%=funcnames[i]%>,
+    payload,
+  }),
+<%_ } -%>

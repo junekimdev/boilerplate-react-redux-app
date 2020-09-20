@@ -1,0 +1,7 @@
+
+<%_ for(let i=0; i<funcnames.length; i++) {-%>
+case <%=name%>.const.<%=funcnames[i]%>:
+  return {
+    ...state,
+  };
+<%_ } -%>

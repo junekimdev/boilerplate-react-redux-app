@@ -1,0 +1,10 @@
+
+<%_ for (let i=0; i<funcnames.length; i++) {-%>
+function* <%=funcnames[i]%>Worker(action: IAction) {
+  const {} = action.payload;
+}
+<%_ } -%>
+
+<%_ for (let i=0; i<funcnames.length; i++) {-%>
+yield takeEvery(<%=name%>.const.<%=funcnames[i]%>, <%=funcnames[i]%>Worker);
+<%_ } -%>

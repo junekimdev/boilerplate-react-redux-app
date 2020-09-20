@@ -1,0 +1,111 @@
+@import '../components/theme.scss';
+
+// Document style
+:root {
+  @include css-var($global-var);
+}
+
+#__next {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@include big-screen {
+  html {
+    scroll-behavior: smooth;
+
+    // Turn off smooth scroll for people who have motion sickness
+    @media screen and (prefers-reduced-motion: reduce) {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  @include var(color, font-color);
+  @include var(background-color, background-color);
+  font-size: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// Specific tag style
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  @include var(color, font-color);
+  text-decoration: none;
+}
+
+ol,
+ul {
+  padding: 0;
+  margin: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+@include only-ie {
+  picture {
+    display: block;
+  }
+}
+
+// Font
+
+// Global classes
+
+.btn {
+  font-size: 14px;
+  padding: 12px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #cccccc;
+  }
+
+  &,
+  &:link,
+  &:visited,
+  &:active {
+    @include var(background-color, btn-bg-color);
+    @include var(color, btn-font-color);
+  }
+  &:hover {
+    background-color: transparent;
+    @include var(color, btn-bg-color);
+    box-shadow: 0 0 0 2px $bright-blue;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px black;
+  }
+}
+
+.underline-link {
+  display: block;
+
+  &:link,
+  &:visited,
+  &:active {
+    @include var(color, link-color);
+    text-decoration: underline;
+  }
+
+  &:hover {
+    @include var(color, font-color);
+  }
+}

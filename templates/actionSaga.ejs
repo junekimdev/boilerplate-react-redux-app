@@ -1,0 +1,18 @@
+import { takeLatest, takeEvery, select, put } from 'redux-saga/effects';
+import { AxiosResponse } from 'axios';
+import { <%=name%>, request } from '../actions';
+import { TSRoot } from '../reducers';
+import { IAction } from '../../types';
+import {} from '../apiURLs';
+
+<%_ for (let i=0; i<funcnames.length; i++) {-%>
+function* <%=funcnames[i]%>Worker(action: IAction) {
+  const {} = action.payload;
+}
+<%_ } -%>
+
+export default function* watcher() {
+  <%_ for (let i=0; i<funcnames.length; i++) {-%>
+  yield takeEvery(<%=name%>.const.<%=funcnames[i]%>, <%=funcnames[i]%>Worker);
+  <%_ } -%>
+}

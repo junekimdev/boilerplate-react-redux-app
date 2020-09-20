@@ -1,0 +1,22 @@
+import { Reducer } from 'redux';
+import <%=name%> from '../actions/<%=name%>';
+import { IAction } from '../../types'
+
+type TS<%=name%> = {}
+
+const initialState: TS<%=name%> = {};
+
+const reducer: Reducer<TS<%=name%>, IAction> = (state = initialState, action) => {
+  switch (action.type) {
+    <%_ for(let i=0; i<funcnames.length; i++) {-%>
+    case <%=name%>.const.<%=funcnames[i]%>:
+      return {
+        ...state,
+      };
+    <%_ } -%>
+    default:
+      return state;
+  }
+};
+
+export default reducer;

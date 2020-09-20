@@ -1,0 +1,100 @@
+$screen-1: 576px;
+$screen-2: 780px;
+$screen-3: 1900px;
+
+// Media query
+@mixin big-screen {
+  @media (min-width: #{$screen-1}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$screen-1}) and (max-width: #{$screen-2}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$screen-2}) {
+    @content;
+  }
+}
+
+@mixin desktop-xl {
+  @media (min-width: #{$screen-3}) {
+    @content;
+  }
+}
+
+// IE specific style
+@mixin only_ie {
+  @media (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+$light-blue: #5ccbf2;
+$font-color: #353535;
+$bright-blue: #392094;
+$navbar-width: 48px;
+
+// CSS variable fallbacks
+$global-var: (
+  max-width: 1366px,
+  background-color: #f5f5f5,
+  label-color: #aaaaaa,
+  btn-bg-color: $bright-blue,
+  btn-font-color: #f0f0f0,
+  graph-bg-color: #303030,
+  graph-font-color: #505050,
+  navbar-height: 72px,
+  navbar-height-mobile: 48px,
+  navbar-width: $navbar-width,
+  navbar-bg-color: $bright-blue,
+  brand-font-size: 20px,
+  brand-image-size: 36px,
+  font-color: $font-color,
+  link-color: $light-blue,
+  footer-bg-color: #666666,
+  footer-font-color: #9b9b9b,
+  kakao-yellow: #fae100,
+);
+
+@mixin base-var($property, $variable, $mapper) {
+  #{$property}: map-get($mapper, $variable);
+  #{$property}: var(--#{$variable});
+}
+
+@mixin var($property, $variable) {
+  @include base-var($property, $variable, $global-var);
+}
+
+@mixin css-var($mapper) {
+  @each $property, $value in $mapper {
+    --#{$property}: #{$value};
+  }
+}
+
+// Work around for flexbox (justify-content: space-evenly)
+@mixin space-evenly {
+  justify-content: space-around; // for ie and edge
+  @supports not (-ms-ime-align: auto) {
+    justify-content: space-evenly; // other browsers
+  }
+}
+
+// Font Awesome 5 Free
+@mixin fontawesome {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+
+@keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
