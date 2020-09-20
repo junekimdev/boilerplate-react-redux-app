@@ -100,6 +100,7 @@ Root
 |-- controllers  
 |--|-- index.ts  
 |--|-- store.ts  
+|--|-- apiURLs.ts  
 |--|-- actions  
 |--|--|-- index.ts  
 |--|--|-- eachAction.ts  
