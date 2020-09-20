@@ -160,18 +160,18 @@ node codegen-comp.js --name=myComponent --V
    > export { default as myNewAction } from './myNewAction';
    > ```
 
-1. Add `myNewAction` into `index.ts` under reducers directory
+1. Add `myNewActionReducer` into `index.ts` under reducers directory
 
    > ```ts
-   > import myNewAction from './myNewAction';
+   > import myNewAction from './myNewActionReducer';
    > const rootReducer = combineReducers({ existingAction, myNewAction });
    > ```
 
-1. Add `myNewAction` into `index.ts` under sagas directory
+1. Add `myNewActionSaga` into `index.ts` under sagas directory
 
    > ```ts
-   > import myNewAction from './myNewAction';
-   > const sagas: any[] = [requestSaga, existingAction, myNewAction];
+   > import myNewActionSaga from './myNewActionSaga';
+   > const sagas: any[] = [requestSaga, existingActionSaga, myNewActionSaga];
    > ```
 
 #### Appending to the existing files
