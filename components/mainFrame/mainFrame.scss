@@ -3,6 +3,7 @@
 main {
   position: relative;
   width: 100%;
+  min-height: 100%;
 
   .navbar {
     &--vertical {
@@ -35,6 +36,9 @@ main {
 
   .mainFrame {
     width: calc(100% - #{$navbar-width});
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     margin-left: $navbar-width;
   }
 }
