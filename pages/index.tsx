@@ -15,9 +15,8 @@ const page = () => {
         title="Template | JuneKimDev"
         desc="Template created by JuneKimDev"
         url={publicUrl}
-      />
-      <MainFrame>
-      </MainFrame>
+      ></Meta>
+      <MainFrame></MainFrame>
     </>
   );
 };
