@@ -17,13 +17,16 @@ This is boilerplate codes to quick-start a react app
 
 ### Prerequisites
 
-Install Node.js at least 12.x.x LTS
+Install Node.js at least 14.x.x LTS
 
 ```shell
 # Debian
 sudo apt update
 sudo apt install nodejs
 nodejs -v
+
+# Windows
+choco install nodejs-lts
 ```
 
 ### Installing
@@ -33,7 +36,7 @@ Clone the repo and install dependencies
 ```shell
 # git clone will create a directory named myAppName
 # if the directory is already created, then use .(dot) instead of myAppName
-git clone https://github.com/JuneKimDev/boilerplate-react-app.git myAppName
+git clone https://github.com/JuneKimDev/boilerplate-react-app.git <myAppName>
 cd myAppName
 yarn
 ```
@@ -46,7 +49,7 @@ git init
 git add .
 git commit -m "Initial commit"
 git branch -M master
-git remote add origin https://github.com/JuneKimDev/boilerplate-react-app.git
+git remote add origin <myGitRepo>
 git push -u origin master
 ```
 
@@ -79,7 +82,7 @@ API_URL=http://api.domain.com
 - Browser style normalization script: Normalize
 - Stylesheet preprocessor: SASS/SCSS
 - Stylesheet postprocessor: Postcss (included in NextJS)
-- Postcss plugin: Autoprefixer
+- Postcss plugin: Autoprefixer (included in NextJS)
 - Version control: Git
 - Source code repository: GitHub
 - Linter: ESLint
@@ -93,7 +96,7 @@ Root
 |--|-- \_theme.scss  
 |--|-- eachComponent  
 |--|--|-- index.ts  
-|--|--|-- eachComponent.scss  
+|--|--|-- eachComponent.module.scss  
 |--|--|-- eachComponentInteractor.tsx  
 |--|--|-- eachComponentPresenter.tsx  
 |--|--|-- eachComponentViewName.tsx  
@@ -189,4 +192,4 @@ node codegen-comp.js --name=myComponent --V
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details
