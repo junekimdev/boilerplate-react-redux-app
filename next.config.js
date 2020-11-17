@@ -1,6 +1,4 @@
-const withStyles = require('@webdeb/next-styles');
-
-module.exports = withStyles({
+module.exports = {
   sass: true, // use .scss files
   modules: true, // style.(m|module).css & style.(m|module).scss for module files
   // @see https://nextjs.org/docs/api-reference/next.config.js/environment-variables
@@ -15,4 +13,4 @@ module.exports = withStyles({
   // When process.env.BUILD_ID is undefined, fall back to the default
   generateBuildId: async () => (process.env.BUILD_ID ? process.env.BUILD_ID : null),
   poweredByHeader: false,
-});
+};

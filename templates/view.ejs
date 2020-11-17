@@ -1,11 +1,12 @@
 import { ChangeEvent, MouseEvent } from 'react';
+import styles from './<%=name%>.module.scss'
 import {} from '../../types';
 
 const view = (props: {}) => {
   const {} = props;
   
   return (
-    <div className="<%=name%>__"></div>
+    <div className={styles.view}></div>
   );
 }
 

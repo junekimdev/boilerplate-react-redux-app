@@ -40,7 +40,7 @@ const main = () => {
     renderEjs(indexTemplate, name, 'index.ts');
     renderEjs(interactorTemplate, name, `${name}Interactor.tsx`);
     renderEjs(presenterTemplate, name, `${name}Presenter.tsx`);
-    renderEjs(scssTemplate, name, `${name}.scss`);
+    renderEjs(scssTemplate, name, `${name}.module.scss`);
     if (v && !V) renderEjs(viewTemplate, name, `${name}View.tsx`);
 
     console.log(`Generated the [${name}] component`);

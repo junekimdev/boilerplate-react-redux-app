@@ -1,13 +1,13 @@
 import { useEffect, ChangeEvent, MouseEvent } from 'react';
-import './<%=name%>.scss'
+import styles from './<%=name%>.module.scss'
 import {} from '../../types';
 
 const presenter = (props: {}) => {
   const {} = props;
   
   return (
-    <section className="<%=name%>">
-      <div className="<%=name%>__container"></div>
+    <section className={styles.<%=name%>}>
+      <div className={styles.container}></div>
     </section>
   );
 }
