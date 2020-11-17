@@ -1,3 +1,5 @@
+import { IReqWithParam, IReqWithData, IReqImageFile } from '../../types';
+
 const requestConst = {
   get: 'REQUEST_GET',
   post: 'REQUEST_POST',
@@ -5,21 +7,15 @@ const requestConst = {
 };
 
 const requestAction = {
-  get: (payload: { url: string; params?: object; subscriber?: string }) => ({
+  get: (payload: IReqWithParam) => ({
     type: requestConst.get,
     payload,
   }),
-  post: (payload: { url: string; data: object; subscriber?: string }) => ({
+  post: (payload: IReqWithData) => ({
     type: requestConst.post,
     payload,
   }),
-  getImageFile: (payload: {
-    url: string;
-    params?: object;
-    subscriber: string;
-    filename: string;
-    generator: Generator<{ url: string; filename: string }>;
-  }) => ({
+  getImageFile: (payload: IReqImageFile) => ({
     type: requestConst.getImageFile,
     payload,
   }),
