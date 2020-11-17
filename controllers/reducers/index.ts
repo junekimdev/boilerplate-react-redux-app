@@ -1,8 +1,11 @@
+import React from 'react';
 import { combineReducers } from 'redux';
-import { useSelector, TypedUseSelectorHook } from 'react-redux';
+import { createSelectorHook } from 'react-redux';
+import { IAction } from '../../types';
+import reducer from './placeholder';
 
-const rootReducer = combineReducers({ });
+const rootReducer = combineReducers({ reducer });
 
 export default rootReducer;
 export type TSRoot = ReturnType<typeof rootReducer>;
-export const useTypedSelector: TypedUseSelectorHook<TSRoot> = useSelector;
+export const useTypedSelector = createSelectorHook<TSRoot, IAction>();
