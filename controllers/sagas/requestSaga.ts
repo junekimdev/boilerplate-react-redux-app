@@ -1,19 +1,11 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 import request from '../actions/request';
 import { IAction } from '../../types';
 
 const baseURL = process.env.API_URL || 'https://localhost:4000';
 
 const agent = axios.create({ baseURL });
-
-const makeRequest = async (
-  url: string,
-  method: 'GET' | 'POST',
-  data?: object,
-  params?: object,
-  responseType?: 'arraybuffer' | 'document' | 'json' | 'text' | 'stream' | 'blob',
-) => await agent.request({ method, url, data, params, responseType });
 
 function* getWorker(
   action: IAction<{
@@ -24,7 +16,8 @@ function* getWorker(
   }>,
 ) {
   const { url, data, params, subscriber } = action.payload;
-  const res: AxiosResponse = yield call(makeRequest, url, 'GET', data, params);
+  const config: AxiosRequestConfig = { method: 'GET', url, data, params };
+  const res: AxiosResponse = yield call(agent.request, config);
   if (subscriber) yield put({ type: subscriber, payload: res });
 }
 function* postWorker(
@@ -36,7 +29,8 @@ function* postWorker(
   }>,
 ) {
   const { url, data, params, subscriber } = action.payload;
-  const res: AxiosResponse = yield call(makeRequest, url, 'POST', data, params);
+  const config: AxiosRequestConfig = { method: 'POST', url, data, params };
+  const res: AxiosResponse = yield call(agent.request, config);
   if (subscriber) yield put({ type: subscriber, payload: res });
 }
 function* getImageFileWorker(
@@ -50,7 +44,8 @@ function* getImageFileWorker(
   }>,
 ) {
   const { url, data, params, subscriber, filename, generator } = action.payload;
-  const res: AxiosResponse = yield call(makeRequest, url, 'GET', data, params, 'blob');
+  const config: AxiosRequestConfig = { method: 'GET', url, data, params, responseType: 'blob' };
+  const res: AxiosResponse = yield call(agent.request, config);
   yield put({ type: subscriber, payload: { res, filename, generator } });
 }
 
