@@ -37,6 +37,8 @@ $screen-3: 1900px;
 $light-blue: #5ccbf2;
 $font-color: #353535;
 $bright-blue: #392094;
+$btn-bg-color: $bright-blue;
+$btn-font-color: #f0f0f0;
 $navbar-width: 48px;
 
 // CSS variable fallbacks
@@ -44,8 +46,6 @@ $global-var: (
   max-width: 1366px,
   background-color: #f5f5f5,
   label-color: #aaaaaa,
-  btn-bg-color: $bright-blue,
-  btn-font-color: #f0f0f0,
   graph-bg-color: #303030,
   graph-font-color: #505050,
   navbar-height: 72px,
@@ -90,11 +90,46 @@ $global-var: (
   font-weight: 900;
 }
 
+// Spinning animation keyframes
 @keyframes spinning {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+// Button style
+@mixin btn($bg-color, $font-color) {
+  font-size: 14px;
+  padding: 12px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #cccccc;
+  }
+
+  &,
+  &:link,
+  &:visited,
+  &:active {
+    background-color: $bg-color;
+    color: $font-color;
+  }
+  &:hover {
+    background-color: transparent;
+    color: $bg-color;
+    box-shadow: 0 0 0 2px $bg-color;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px black;
   }
 }

@@ -61,38 +61,8 @@ ul {
 // Font
 
 // Global classes
-
 .btn {
-  font-size: 14px;
-  padding: 12px 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-
-  &:disabled {
-    background-color: #cccccc;
-  }
-
-  &,
-  &:link,
-  &:visited,
-  &:active {
-    @include var(background-color, btn-bg-color);
-    @include var(color, btn-font-color);
-  }
-  &:hover {
-    background-color: transparent;
-    @include var(color, btn-bg-color);
-    box-shadow: 0 0 0 2px $bright-blue;
-  }
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px black;
-  }
+  @include btn($btn-bg-color, $btn-font-color);
 }
 
 .underline-link {
