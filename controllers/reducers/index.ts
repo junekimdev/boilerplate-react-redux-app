@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import { createSelectorHook } from 'react-redux';
 import { IAction } from '../../types';
-import reducer from './placeholder';
+import placeholder from './placeholder';
 
-const rootReducer = combineReducers({ reducer });
+const rootReducer = combineReducers({ placeholder });
 
 export default rootReducer;
 export type TSRoot = ReturnType<typeof rootReducer>;
