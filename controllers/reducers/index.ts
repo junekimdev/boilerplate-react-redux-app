@@ -1,4 +1,3 @@
-import React from 'react';
 import { combineReducers } from 'redux';
 import { createSelectorHook } from 'react-redux';
 import { IAction } from '../../types';
