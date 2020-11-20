@@ -15,7 +15,16 @@ function* getWorker(action: IAction<IRequest>) {
     const res: AxiosResponse = yield call(agent.request, config);
     if (subscriber) yield put({ type: subscriber, payload: res });
   } catch (error) {
-    if (subscriber) yield put({ type: subscriber, payload: error.response });
+    if (error.response && subscriber) {
+      // The request was made and the response was received; but the response was erroneous
+      yield put({ type: subscriber, payload: error.response });
+    } else {
+      console.log(error);
+      yield put({
+        type: subscriber,
+        payload: { status: 500, statusText: 'Internal Server Error' },
+      });
+    }
   }
 }
 function* postWorker(action: IAction<IRequest>) {
@@ -26,7 +35,16 @@ function* postWorker(action: IAction<IRequest>) {
     const res: AxiosResponse = yield call(agent.request, config);
     if (subscriber) yield put({ type: subscriber, payload: res });
   } catch (error) {
-    if (subscriber) yield put({ type: subscriber, payload: error.response });
+    if (error.response && subscriber) {
+      // The request was made and the response was received; but the response was erroneous
+      yield put({ type: subscriber, payload: error.response });
+    } else {
+      console.log(error);
+      yield put({
+        type: subscriber,
+        payload: { status: 500, statusText: 'Internal Server Error' },
+      });
+    }
   }
 }
 function* putWorker(action: IAction<IRequest>) {
@@ -37,7 +55,16 @@ function* putWorker(action: IAction<IRequest>) {
     const res: AxiosResponse = yield call(agent.request, config);
     if (subscriber) yield put({ type: subscriber, payload: res });
   } catch (error) {
-    if (subscriber) yield put({ type: subscriber, payload: error.response });
+    if (error.response && subscriber) {
+      // The request was made and the response was received; but the response was erroneous
+      yield put({ type: subscriber, payload: error.response });
+    } else {
+      console.log(error);
+      yield put({
+        type: subscriber,
+        payload: { status: 500, statusText: 'Internal Server Error' },
+      });
+    }
   }
 }
 function* deleteWorker(action: IAction<IRequest>) {
@@ -48,7 +75,16 @@ function* deleteWorker(action: IAction<IRequest>) {
     const res: AxiosResponse = yield call(agent.request, config);
     if (subscriber) yield put({ type: subscriber, payload: res });
   } catch (error) {
-    if (subscriber) yield put({ type: subscriber, payload: error.response });
+    if (error.response && subscriber) {
+      // The request was made and the response was received; but the response was erroneous
+      yield put({ type: subscriber, payload: error.response });
+    } else {
+      console.log(error);
+      yield put({
+        type: subscriber,
+        payload: { status: 500, statusText: 'Internal Server Error' },
+      });
+    }
   }
 }
 
