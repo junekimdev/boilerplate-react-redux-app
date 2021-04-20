@@ -13,4 +13,8 @@ module.exports = {
   // When process.env.BUILD_ID is undefined, fall back to the default
   generateBuildId: async () => (process.env.BUILD_ID ? process.env.BUILD_ID : null),
   poweredByHeader: false,
+  // @see https://nextjs.org/docs/messages/webpack5
+  future: {
+    webpack5: true,
+  },
 };
