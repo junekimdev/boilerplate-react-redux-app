@@ -43,20 +43,6 @@ const Meta = (props: IMeta) => {
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffffff" />
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="theme-color" content="#ffffff" />
-
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-        crossOrigin="anonymous"
-      />
-      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-        crossOrigin="anonymous"
-      />
       <script src="/modernizr.js" type="text/javascript" defer></script>
       {props.children}
     </Head>
