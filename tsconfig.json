@@ -6,7 +6,7 @@
     "declaration": true,
     "declarationMap": true,
     "noEmit": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "pretty": true,
