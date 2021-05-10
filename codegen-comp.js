@@ -11,15 +11,15 @@ const renderEjs = (templateFile, name, outFilename) => {
     const dirpath = path.join(__dirname, 'components', name);
     try {
       fs.accessSync(dirpath);
-    } catch (error) {
+    } catch (e) {
       fs.mkdirSync(dirpath);
     }
 
     const filePath = path.join(__dirname, 'components', name, outFilename);
+    let flags = 'a';
     try {
       fs.accessSync(filePath, fs.constants.R_OK | fs.constants.W_OK);
-      flags = 'a';
-    } catch (err) {
+    } catch (e) {
       flags = 'w';
     } finally {
       const writer = fs.createWriteStream(filePath, { flags });

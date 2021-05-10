@@ -24,8 +24,10 @@ const main = () => {
      * all: when true, actions, reducer, saga will be generated
      * n: when true, new templates instead of extention templates will be used
      */
+    // eslint-disable-next-line prefer-const
     let { _: funcnames, name, a, r, s, all, n } = parseArgs();
 
+    // eslint-disable-next-line no-multi-assign
     if (all) a = r = s = true;
 
     // Check that the required flags are in
@@ -38,7 +40,7 @@ const main = () => {
       process.exit(1);
     }
 
-    const typenames = funcnames.map((s) => `${name.toUpperCase()}_${snakeCaseCap(s)}`);
+    const typenames = funcnames.map((str) => `${name.toUpperCase()}_${snakeCaseCap(str)}`);
 
     // Boilerplate Templates
     const actionTemplate = n

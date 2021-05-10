@@ -11,44 +11,44 @@ const snakeCaseCap = (string) => {
 };
 
 const parseArgs = () => {
-  args = process.argv;
-  if (args.length < 2) assert('No arguments found');
+  let args = process.argv;
+  console.assert(args.length > 2, 'No arguments found');
 
   args = args.slice(2);
-  result = {};
-  result['_'] = [];
+  const result = {};
+  result._ = [];
 
-  for (i = 0; i < args.length; i++) {
+  for (let i = 0; i < args.length; i++) {
     if (args[i].includes('--')) {
-      temp = args[i].slice(2);
+      const temp = args[i].slice(2);
       if (temp.includes('=')) {
-        temp = temp.split('=');
-        if (temp[1].toLowerCase() === 'true') {
-          result[temp[0]] = true;
-        } else if (temp[1].toLowerCase() === 'false') {
-          result[temp[0]] = false;
+        const [k, v] = temp.split('=');
+        if (v.toLowerCase() === 'true') {
+          result[k] = true;
+        } else if (v.toLowerCase() === 'false') {
+          result[k] = false;
         } else {
-          result[temp[0]] = temp[1];
+          result[k] = v;
         }
       } else {
         result[temp] = true;
       }
     } else if (args[i].includes('-')) {
-      temp = args[i].slice(1);
+      const temp = args[i].slice(1);
       if (temp.includes('=')) {
-        temp = temp.split('=');
-        if (temp[1].toLowerCase() === 'true') {
-          result[temp[0]] = true;
-        } else if (temp[1].toLowerCase() === 'false') {
-          result[temp[0]] = false;
+        const [k, v] = temp.split('=');
+        if (v.toLowerCase() === 'true') {
+          result[k] = true;
+        } else if (v.toLowerCase() === 'false') {
+          result[k] = false;
         } else {
-          result[temp[0]] = temp[1];
+          result[k] = v;
         }
       } else {
         result[temp] = true;
       }
     } else {
-      result['_'] = [...result['_'], args[i]];
+      result._ = [...result._, args[i]];
     }
   }
   return result;
