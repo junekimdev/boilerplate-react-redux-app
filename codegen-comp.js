@@ -1,16 +1,31 @@
-const fs = require('fs-extra');
-const ejs = require('ejs');
-const parser = require('yargs-parser');
+const fs = require('fs');
 const path = require('path');
+const ejs = require('ejs');
+const { parseArgs } = require('./util');
 
 const renderEjs = (templateFile, name, outFilename) => {
   const data = { name };
   ejs.renderFile(templateFile, data, {}, (err, str) => {
     if (err) console.error(err);
 
+    const dirpath = path.join(__dirname, 'components', name);
+    try {
+      fs.accessSync(dirpath);
+    } catch (error) {
+      fs.mkdirSync(dirpath);
+    }
+
     const filePath = path.join(__dirname, 'components', name, outFilename);
-    fs.ensureFileSync(filePath); // Check if file exists, or create it
-    fs.outputFileSync(filePath, str);
+    try {
+      fs.accessSync(filePath, fs.constants.R_OK | fs.constants.W_OK);
+      flags = 'a';
+    } catch (err) {
+      flags = 'w';
+    } finally {
+      const writer = fs.createWriteStream(filePath, { flags });
+      writer.write(str);
+      writer.end();
+    }
   });
 };
 
@@ -21,7 +36,7 @@ const main = () => {
      * v: when true, view will be generated; default to true
      * V: when true, view will not be genereated
      */
-    const { name, v = true, V } = parser(process.argv.slice(2));
+    const { name, v = true, V } = parseArgs();
 
     // Check that the required flags are in
     if (!name) {

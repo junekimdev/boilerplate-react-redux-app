@@ -1,19 +1,7 @@
-const fs = require('fs-extra');
-const ejs = require('ejs');
-const parser = require('yargs-parser');
+const fs = require('fs');
 const path = require('path');
-
-/**
- *
- * @param {string} string
- */
-const snakeCaseCap = (string) => {
-  return string
-    .replace(/\W+/g, ' ')
-    .split(/ |\B(?=[A-Z0-9])/)
-    .map((word) => word.toUpperCase())
-    .join('_');
-};
+const ejs = require('ejs');
+const { snakeCaseCap, parseArgs } = require('./util');
 
 const renderEjs = (templateFile, data, outFilename, flags, outType) => {
   ejs.renderFile(templateFile, data, {}, (err, str) => {
@@ -36,7 +24,7 @@ const main = () => {
      * all: when true, actions, reducer, saga will be generated
      * n: when true, new templates instead of extention templates will be used
      */
-    let { _: funcnames, name, a, r, s, all, n } = parser(process.argv.slice(2));
+    let { _: funcnames, name, a, r, s, all, n } = parseArgs();
 
     if (all) a = r = s = true;
 
