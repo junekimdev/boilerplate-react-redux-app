@@ -12,7 +12,10 @@ const snakeCaseCap = (string) => {
 
 const parseArgs = () => {
   let args = process.argv;
-  console.assert(args.length > 2, 'No arguments found');
+  if (args.length < 2) {
+    console.error('No arguments found');
+    return {};
+  }
 
   args = args.slice(2);
   const result = {};

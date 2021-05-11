@@ -12,6 +12,7 @@ const renderEjs = (templateFile, name, outFilename) => {
     try {
       fs.accessSync(dirpath);
     } catch (e) {
+      console.log(`Creating ./components/[${name}] directory`);
       fs.mkdirSync(dirpath);
     }
 
@@ -20,6 +21,7 @@ const renderEjs = (templateFile, name, outFilename) => {
     try {
       fs.accessSync(filePath, fs.constants.R_OK | fs.constants.W_OK);
     } catch (e) {
+      console.log('Failed to find the file to append; creating files');
       flags = 'w';
     } finally {
       const writer = fs.createWriteStream(filePath, { flags });

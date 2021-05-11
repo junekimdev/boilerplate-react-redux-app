@@ -42,6 +42,14 @@ const main = () => {
 
     const typenames = funcnames.map((str) => `${name.toUpperCase()}_${snakeCaseCap(str)}`);
 
+    const filePath = path.join(__dirname, 'controllers', 'actions', `${name}.ts`);
+
+    try {
+      fs.accessSync(filePath, fs.constants.R_OK | fs.constants.W_OK);
+    } catch (e) {
+      n = true;
+    }
+
     // Boilerplate Templates
     const actionTemplate = n
       ? path.join(__dirname, 'templates', 'action.ejs')
