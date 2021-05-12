@@ -8,25 +8,14 @@ const renderEjs = (templateFile, name, outFilename) => {
   ejs.renderFile(templateFile, data, {}, (err, str) => {
     if (err) console.error(err);
 
-    const dirpath = path.join(__dirname, 'components', name);
-    try {
-      fs.accessSync(dirpath);
-    } catch (e) {
-      console.log(`Creating ./components/[${name}] directory`);
-      fs.mkdirSync(dirpath);
-    }
-
     const filePath = path.join(__dirname, 'components', name, outFilename);
-    let flags = 'a';
+
     try {
-      fs.accessSync(filePath, fs.constants.R_OK | fs.constants.W_OK);
-    } catch (e) {
-      console.log('Failed to find the file to append; creating files');
-      flags = 'w';
-    } finally {
-      const writer = fs.createWriteStream(filePath, { flags });
+      const writer = fs.createWriteStream(filePath, { flags: 'w' });
       writer.write(str);
       writer.end();
+    } catch (e) {
+      console.error(`Failed to create file: ${outFilename}`);
     }
   });
 };
@@ -46,6 +35,18 @@ const main = () => {
       process.exit(1);
     }
 
+    // Check if the directory exists
+    const dirPath = path.join(__dirname, 'components', name);
+    try {
+      fs.accessSync(dirPath);
+      // If exists, exit
+      console.error('A component with the given name exists already');
+      process.exit(1);
+    } catch (e) {
+      console.log(`Creating ${dirPath}`);
+      fs.mkdirSync(dirPath);
+    }
+
     // Boilerplate Templates
     const indexTemplate = path.join(__dirname, 'templates', 'compIndex.ejs');
     const interactorTemplate = path.join(__dirname, 'templates', 'interactor.ejs');
@@ -60,7 +61,7 @@ const main = () => {
     renderEjs(scssTemplate, name, `${name}.module.scss`);
     if (v && !V) renderEjs(viewTemplate, name, `${name}View.tsx`);
 
-    console.log(`Generated the [${name}] component`);
+    console.log(`Generated the component: ${name}`);
   } catch (err) {
     console.error(err);
   }
