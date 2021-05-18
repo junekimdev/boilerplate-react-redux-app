@@ -52,6 +52,7 @@ const main = () => {
     const interactorTemplate = path.join(__dirname, 'templates', 'interactor.ejs');
     const presenterTemplate = path.join(__dirname, 'templates', 'presenter.ejs');
     const scssTemplate = path.join(__dirname, 'templates', 'scss.ejs');
+    const typeTemplate = path.join(__dirname, 'templates', 'type.ejs');
     const viewTemplate = path.join(__dirname, 'templates', 'view.ejs');
 
     // Boilerplate Outputs
@@ -59,6 +60,7 @@ const main = () => {
     renderEjs(interactorTemplate, name, `${name}Interactor.tsx`);
     renderEjs(presenterTemplate, name, `${name}Presenter.tsx`);
     renderEjs(scssTemplate, name, `${name}.module.scss`);
+    renderEjs(typeTemplate, name, `${name}Type.ts`);
     if (v && !V) renderEjs(viewTemplate, name, `${name}View.tsx`);
 
     console.log(`Generated the component: ${name}`);
