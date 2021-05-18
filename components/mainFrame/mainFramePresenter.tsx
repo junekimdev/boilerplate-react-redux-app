@@ -7,7 +7,7 @@ const presenter = (props: { children?: ReactNode[] | ReactNode }) => {
   return (
     <main role="main" className={styles.main}>
       <Navbar />
-      <section className={styles.mainFrame}>{children}</section>
+      <div className={styles.mainFrame}>{children}</div>
     </main>
   );
 };
