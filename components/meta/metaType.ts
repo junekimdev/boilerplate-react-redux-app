@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export interface IMeta {
+export interface IPropsMeta {
   title: string;
   desc: string;
   url: string;

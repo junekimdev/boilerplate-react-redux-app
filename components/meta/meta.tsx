@@ -1,8 +1,8 @@
 import Head from 'next/head';
 // import GTag from './gtag';
-import { IMeta } from '../../types';
+import { IPropsMeta } from './metaType';
 
-const Meta = (props: IMeta) => {
+const Meta = (props: IPropsMeta) => {
   const orgName = 'JuneKimDev';
   const siteName = 'Great App';
   const homeUrl = process.env.PUBLIC_URL || 'localhost:3000';
