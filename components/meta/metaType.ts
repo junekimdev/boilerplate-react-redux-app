@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export interface IPropsMeta {
+export type TMPropsMeta = {
   title: string;
   desc: string;
   url: string;
@@ -8,4 +8,4 @@ export interface IPropsMeta {
   imageWidth?: string;
   imageHeight?: string;
   children?: ReactNode[] | ReactNode | any;
-}
+};
