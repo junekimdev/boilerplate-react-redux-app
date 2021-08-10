@@ -12,5 +12,6 @@ module.exports = {
   // @see https://github.com/zeit/next.js/wiki/Deployment
   // When process.env.BUILD_ID is undefined, fall back to the default
   generateBuildId: async () => (process.env.BUILD_ID ? process.env.BUILD_ID : null),
+  eslint: { ignoreDuringBuilds: true },
   poweredByHeader: false,
 };
