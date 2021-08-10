@@ -36,7 +36,7 @@ Clone the repo and install dependencies
 ```shell
 # git clone will create a directory named myAppName
 # if the directory is already created, then use .(dot) instead of myAppName
-git clone https://github.com/JuneKimDev/boilerplate-react-app.git <myAppName>
+git clone https://github.com/junekimdev/boilerplate-react-app.git <myAppName>
 cd myAppName
 yarn
 ```
@@ -188,7 +188,7 @@ node codegen-comp.js --name=myComponent --V
 
 ## Authors
 
-- **June Kim** - _Initial work_ - [Github](https://github.com/JuneKimDev)
+- **June Kim** - _Initial work_ - [Github](https://github.com/junekimdev)
 
 ## License
 
