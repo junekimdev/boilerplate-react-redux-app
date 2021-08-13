@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  app:
+    image: junekimdev/reactapp:1.0-alpine
+    container_name: reactapp
+    restart: unless-stopped
+    expose:
+      - 3000
+    networks:
+      - nginx-proxy
+
+networks:
+  nginx-proxy:
+    external: true
