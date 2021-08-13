@@ -14,4 +14,5 @@ module.exports = {
   generateBuildId: async () => (process.env.BUILD_ID ? process.env.BUILD_ID : null),
   eslint: { ignoreDuringBuilds: true },
   poweredByHeader: false,
+  reactStrictMode: true,
 };
