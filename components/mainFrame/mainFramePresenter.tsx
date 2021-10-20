@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import styles from './mainFrame.module.scss';
 import Navbar from './mainFrameViewNavbar';
 
-const presenter = (props: { children?: ReactNode[] | ReactNode }) => {
+const Presenter = (props: { children?: ReactNode[] | ReactNode }) => {
   const { children } = props;
   return (
     <main role="main" className={styles.main}>
@@ -12,4 +12,4 @@ const presenter = (props: { children?: ReactNode[] | ReactNode }) => {
   );
 };
 
-export default presenter;
+export default Presenter;

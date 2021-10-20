@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styles from './mainFrame.module.scss';
 
-const view = () => {
+const View = () => {
   return (
     <nav className={styles.navbarVertical}>
       <Link href="/">
@@ -13,4 +13,4 @@ const view = () => {
   );
 };
 
-export default view;
+export default View;

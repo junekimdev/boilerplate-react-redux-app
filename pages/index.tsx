@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import Meta from '../components/meta';
 import MainFrame from '../components/mainFrame';
 
-const page = () => {
+const Page = () => {
   const publicUrl = process.env.PUBLIC_URL || 'localhost:3000';
 
   useEffect(() => {
@@ -21,4 +21,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
