@@ -1,5 +1,5 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
-import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
+import axios, { AxiosResponse, AxiosRequestConfig, AxiosError } from 'axios';
 import request from '../actions/request';
 import { IAction, IRequest } from '../../types';
 
@@ -15,9 +15,9 @@ function* getWorker(action: IAction<IRequest>) {
     const res: AxiosResponse = yield call(agent.request, config);
     if (subscriber) yield put({ type: subscriber, payload: res });
   } catch (error) {
-    if (error.response && subscriber) {
+    if ((error as AxiosError).response && subscriber) {
       // The request was made and the response was received; but the response was erroneous
-      yield put({ type: subscriber, payload: error.response });
+      yield put({ type: subscriber, payload: (error as AxiosError).response });
     } else {
       console.log(error);
       yield put({
@@ -35,9 +35,9 @@ function* postWorker(action: IAction<IRequest>) {
     const res: AxiosResponse = yield call(agent.request, config);
     if (subscriber) yield put({ type: subscriber, payload: res });
   } catch (error) {
-    if (error.response && subscriber) {
+    if ((error as AxiosError).response && subscriber) {
       // The request was made and the response was received; but the response was erroneous
-      yield put({ type: subscriber, payload: error.response });
+      yield put({ type: subscriber, payload: (error as AxiosError).response });
     } else {
       console.log(error);
       yield put({
@@ -55,9 +55,9 @@ function* putWorker(action: IAction<IRequest>) {
     const res: AxiosResponse = yield call(agent.request, config);
     if (subscriber) yield put({ type: subscriber, payload: res });
   } catch (error) {
-    if (error.response && subscriber) {
+    if ((error as AxiosError).response && subscriber) {
       // The request was made and the response was received; but the response was erroneous
-      yield put({ type: subscriber, payload: error.response });
+      yield put({ type: subscriber, payload: (error as AxiosError).response });
     } else {
       console.log(error);
       yield put({
@@ -75,9 +75,9 @@ function* deleteWorker(action: IAction<IRequest>) {
     const res: AxiosResponse = yield call(agent.request, config);
     if (subscriber) yield put({ type: subscriber, payload: res });
   } catch (error) {
-    if (error.response && subscriber) {
+    if ((error as AxiosError).response && subscriber) {
       // The request was made and the response was received; but the response was erroneous
-      yield put({ type: subscriber, payload: error.response });
+      yield put({ type: subscriber, payload: (error as AxiosError).response });
     } else {
       console.log(error);
       yield put({
