@@ -12,12 +12,12 @@
   top: 0;
   left: 0;
   height: 100vh;
-  @include var(width, navbar-width);
-  @include var(background-color, navbar-bg-color);
+  width: var(--navbar-width);
+  background-color: var(--navbar-bg-color);
 
   a {
-    @include var(width, navbar-width);
-    @include var(height, navbar-width);
+    width: var(--navbar-width);
+    height: var(--navbar-width);
     margin-top: 8px;
     display: flex;
     justify-content: center;
@@ -35,9 +35,9 @@
 }
 
 .mainFrame {
-  width: calc(100% - #{$navbar-width});
+  width: calc(100% - var(--navbar-width));
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin-left: $navbar-width;
+  margin-left: var(--navbar-width);
 }

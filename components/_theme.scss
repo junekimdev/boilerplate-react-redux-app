@@ -1,86 +1,32 @@
-$screen-1: 576px;
-$screen-2: 780px;
-$screen-3: 1900px;
+$screen-1: 320px;
+$screen-2: 720px;
+$screen-3: 1024px;
+$screen-4: 1440px;
 
-// Media query
-@mixin big-screen {
-  @media (min-width: #{$screen-1}) {
+// Media queries
+@mixin mobile-xs {
+  @media only screen and (max-width: #{$screen-1}) {
     @content;
   }
 }
+
+// "Mobile screen" is the base of css stylesheet
 
 @mixin tablet {
-  @media (min-width: #{$screen-1}) and (max-width: #{$screen-2}) {
+  @media only screen and (min-width: #{$screen-2}) {
     @content;
   }
 }
 
-@mixin desktop {
-  @media (min-width: #{$screen-2}) {
+@mixin pc {
+  @media only screen and (min-width: #{$screen-3}) {
     @content;
   }
 }
 
-@mixin desktop-xl {
-  @media (min-width: #{$screen-3}) {
+@mixin pc-xl {
+  @media only screen and (min-width: #{$screen-4}) {
     @content;
-  }
-}
-
-// IE specific style
-@mixin only_ie {
-  @media (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    @content;
-  }
-}
-
-$light-blue: #5ccbf2;
-$font-color: #353535;
-$bright-blue: #392094;
-$btn-bg-color: $bright-blue;
-$btn-font-color: #f0f0f0;
-$navbar-width: 48px;
-
-// CSS variable fallbacks
-$global-var: (
-  max-width: 1366px,
-  background-color: #f5f5f5,
-  label-color: #aaaaaa,
-  graph-bg-color: #303030,
-  graph-font-color: #505050,
-  navbar-height: 72px,
-  navbar-height-mobile: 48px,
-  navbar-width: $navbar-width,
-  navbar-bg-color: $bright-blue,
-  brand-font-size: 20px,
-  brand-image-size: 36px,
-  font-color: $font-color,
-  link-color: $light-blue,
-  footer-bg-color: #666666,
-  footer-font-color: #9b9b9b,
-  kakao-yellow: #fae100,
-);
-
-@mixin base-var($property, $variable, $mapper) {
-  #{$property}: map-get($mapper, $variable);
-  #{$property}: var(--#{$variable});
-}
-
-@mixin var($property, $variable) {
-  @include base-var($property, $variable, $global-var);
-}
-
-@mixin css-var($mapper) {
-  @each $property, $value in $mapper {
-    --#{$property}: #{$value};
-  }
-}
-
-// Work around for flexbox (justify-content: space-evenly)
-@mixin space-evenly {
-  justify-content: space-around; // for ie and edge
-  @supports not (-ms-ime-align: auto) {
-    justify-content: space-evenly; // other browsers
   }
 }
 
@@ -90,30 +36,20 @@ $global-var: (
   font-weight: 900;
 }
 
-// Spinning animation keyframes
-@keyframes spinning {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 // Button style
-@mixin btn($bg-color, $font-color) {
-  font-size: 14px;
-  padding: 12px 8px;
+@mixin getBtn($bg-color, $font-color, $font-size) {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 12px 8px;
+  font-size: $font-size;
   background-color: transparent;
   border: none;
   border-radius: 8px;
   cursor: pointer;
 
   &:disabled {
-    background-color: #cccccc;
+    background-color: var(--disabled-color);
   }
 
   &,
@@ -123,11 +59,15 @@ $global-var: (
     background-color: $bg-color;
     color: $font-color;
   }
+
+  // Hovering feedback: color inversion & bordering
   &:hover {
     background-color: transparent;
     color: $bg-color;
     box-shadow: 0 0 0 2px $bg-color;
   }
+
+  // Focus feedback: bordering in black
   &:focus {
     outline: none;
     box-shadow: 0 0 0 2px black;
