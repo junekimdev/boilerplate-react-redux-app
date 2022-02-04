@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const ejs = require('ejs');
-const { snakeCaseCap, parseArgs } = require('./util');
+const { snakeCaseCap, parseArgs } = require('./codegen-util');
 
 const renderEjs = (templateFile, data, outFilename, flags, outType) => {
   ejs.renderFile(templateFile, data, {}, (err, str) => {

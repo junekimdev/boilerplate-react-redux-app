@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const ejs = require('ejs');
-const { parseArgs } = require('./util');
+const { parseArgs } = require('./codegen-util');
 
 const renderEjs = (templateFile, name, outFilename) => {
   const data = { name };
