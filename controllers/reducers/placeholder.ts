@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { IAction } from '../../types';
+import { IAction } from '../types';
 
 const initialState = {};
 

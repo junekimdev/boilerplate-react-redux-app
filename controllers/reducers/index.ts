@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { createSelectorHook } from 'react-redux';
-import { IAction } from '../../types';
+import { IAction } from '../types';
 import placeholder from './placeholder';
 
 const rootReducer = combineReducers({ placeholder });

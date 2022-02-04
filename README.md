@@ -100,6 +100,7 @@ Root
 |--|--|-- eachComponentInteractor.tsx  
 |--|--|-- eachComponentPresenter.tsx  
 |--|--|-- eachComponentViewName.tsx  
+|--|--|-- eachComponentType.tsx  
 |-- controllers  
 |--|-- index.ts  
 |--|-- store.ts  
@@ -113,6 +114,9 @@ Root
 |--|-- sagas  
 |--|--|-- index.ts  
 |--|--|-- eachSaga.ts  
+|--|-- types  
+|--|--|-- index.ts  
+|--|--|-- eachTypes.ts  
 |-- pages  
 |--|-- index.ts  
 |--|-- \_app.tsx  
@@ -124,9 +128,6 @@ Root
 |--|-- assets  
 |--|--|-- images  
 |--|--|--|-- eachImage.png  
-|-- types  
-|--|-- index.ts  
-|--|-- eachTypes.ts  
 |-- templates  
 |--|-- eachCodeGenerationTemplate.ejs
 

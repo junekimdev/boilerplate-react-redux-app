@@ -1,4 +1,4 @@
-import { IRequest, IReqImageFile } from '../../types';
+import { IRequest, IReqImageFile } from '../types';
 
 const requestConst = {
   get: 'REQUEST_GET',

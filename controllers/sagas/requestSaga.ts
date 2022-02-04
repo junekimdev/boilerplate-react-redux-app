@@ -1,7 +1,7 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 import axios, { AxiosResponse, AxiosRequestConfig, AxiosError } from 'axios';
 import request from '../actions/request';
-import { IAction, IRequest } from '../../types';
+import { IAction, IRequest } from '../types';
 
 const baseURL = process.env.API_URL || 'https://localhost:4000';
 
