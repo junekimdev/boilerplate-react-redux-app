@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Script from 'next/script';
 // import GTag from './gtag';
 import { TMPropsMeta } from './metaType';
 
@@ -43,7 +44,7 @@ const Meta = (props: TMPropsMeta) => {
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffffff" />
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="theme-color" content="#ffffff" />
-      <script src="/modernizr.js" type="text/javascript" defer></script>
+      <Script src="/modernizr.js" type="text/javascript" strategy="lazyOnload" defer></Script>
       {props.children}
     </Head>
   );
