@@ -30,12 +30,6 @@ $screen-4: 1440px;
   }
 }
 
-// Font Awesome 5 Free
-@mixin fontawesome {
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-}
-
 // Button style
 @mixin getBtn($bg-color, $font-color, $font-size) {
   display: flex;
