@@ -20,6 +20,20 @@ const renderEjs = (templateFile, name, outFilename) => {
   });
 };
 
+const askQuestion = (query) => {
+  const rl = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+  return new Promise((resolve) =>
+    rl.question(query, (ans) => {
+      rl.close();
+      resolve(ans);
+    }),
+  );
+};
+
+
 const main = () => {
   console.log('Begins code generation...');
   try {
@@ -39,10 +53,12 @@ const main = () => {
     const dirPath = path.join(__dirname, 'components', name);
     try {
       fs.accessSync(dirPath);
-      // If exists, exit
-      console.error('A component with the given name exists already');
-      process.exit(1);
+      // If exists, ask to overwrite or not
+      console.log('A component with the given name exists already');
+      const ans = await askQuestion('Do you want to overwrite it? [y/n] ');
+      if (ans !== 'y' && ans !== 'Y') process.exit(1);
     } catch (e) {
+      // No existing, create it
       console.log(`Creating ${dirPath}`);
       fs.mkdirSync(dirPath);
     }
