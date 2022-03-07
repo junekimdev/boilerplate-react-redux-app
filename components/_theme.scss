@@ -42,10 +42,6 @@ $screen-4: 1440px;
   border-radius: 8px;
   cursor: pointer;
 
-  &:disabled {
-    background-color: var(--disabled-color);
-  }
-
   &,
   &:link,
   &:visited,
@@ -65,5 +61,11 @@ $screen-4: 1440px;
   &:focus {
     outline: none;
     box-shadow: 0 0 0 2px black;
+  }
+  
+  &:disabled {
+    background-color: var(--disabled-color);
+    box-shadow: none;
+    cursor: default;
   }
 }
