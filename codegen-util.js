@@ -1,6 +1,9 @@
+/********************
+ * String formatter
+ ********************/
 /**
- *
  * @param {string} string
+ * @returns {string}
  */
 const snakeCaseCap = (string) => {
   return string
@@ -10,51 +13,65 @@ const snakeCaseCap = (string) => {
     .join('_');
 };
 
-const parseArgs = () => {
-  let args = process.argv;
-  if (args.length < 2) {
-    console.error('No arguments found');
-    return {};
-  }
+/********************
+ * User Input Inquirer
+ ********************/
+const readline = require('readline');
+/**
+ * @param {string} query
+ * @returns {Promise<string>}
+ */
+const askQuestion = (query) => {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+  return new Promise((resolve) =>
+    rl.question(query, (ans) => {
+      rl.close();
+      resolve(ans);
+    }),
+  );
+};
 
-  args = args.slice(2);
+/********************
+ * Argument Parser
+ ********************/
+const convertBoolean = (v) => {
+  if (v.toLowerCase() === 'true') return true;
+  if (v.toLowerCase() === 'false') return false;
+  return v;
+};
+
+const parseNamedArg = (arg) => {
+  if (arg.includes('=')) {
+    // key-value pair
+    const [k, v] = arg.split('=');
+    return [k, convertBoolean(v)];
+  }
+  return [arg, true]; // key-only arg
+};
+
+const parseArg = (arg) => {
+  if (arg.startsWith('-')) {
+    while (arg.startsWith('-')) arg = arg.slice(1); // Remove '-'symbols
+    return parseNamedArg(arg);
+  }
+  return ['_', arg]; // value-only arg
+};
+
+const getArgs = () => {
   const result = {};
   result._ = [];
+  const args = process.argv.slice(2); // Remove execution file
 
   for (let i = 0; i < args.length; i++) {
-    if (args[i].includes('--')) {
-      const temp = args[i].slice(2);
-      if (temp.includes('=')) {
-        const [k, v] = temp.split('=');
-        if (v.toLowerCase() === 'true') {
-          result[k] = true;
-        } else if (v.toLowerCase() === 'false') {
-          result[k] = false;
-        } else {
-          result[k] = v;
-        }
-      } else {
-        result[temp] = true;
-      }
-    } else if (args[i].includes('-')) {
-      const temp = args[i].slice(1);
-      if (temp.includes('=')) {
-        const [k, v] = temp.split('=');
-        if (v.toLowerCase() === 'true') {
-          result[k] = true;
-        } else if (v.toLowerCase() === 'false') {
-          result[k] = false;
-        } else {
-          result[k] = v;
-        }
-      } else {
-        result[temp] = true;
-      }
-    } else {
-      result._ = [...result._, args[i]];
-    }
+    const [k, v] = parseArg(args[i]);
+    result[k] = k === '_' ? [...result[k], v] : v;
   }
+
+  if (result.length === 0) console.warn('No arguments found');
   return result;
 };
 
-module.exports = { snakeCaseCap, parseArgs };
+module.exports = { snakeCaseCap, getArgs, askQuestion };

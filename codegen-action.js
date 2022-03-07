@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const ejs = require('ejs');
-const { snakeCaseCap, parseArgs } = require('./codegen-util');
+const { snakeCaseCap, getArgs, askQuestion } = require('./codegen-util');
 
 const renderEjs = (templateFile, data, outFilename, flags, outType) => {
   ejs.renderFile(templateFile, data, {}, (err, str) => {
@@ -14,43 +14,47 @@ const renderEjs = (templateFile, data, outFilename, flags, outType) => {
   });
 };
 
-const main = () => {
-  console.log('Begins code generation...');
+const main = async () => {
+  console.log('Code generation started...');
   try {
     /**
-     * a: when true, actions will be generated; default to true
-     * r: when true, reducer will be generated
-     * s: when true, saga will be genereated
-     * all: when true, actions, reducer, saga will be generated
-     * n: when true, new templates instead of extention templates will be used
+     * name: filename
+     *
+     * When n is omitted, the code will try to access the file first;
+     * if found, actions will be appended;
+     * if not, the file will be created and actions will be there.
      */
     // eslint-disable-next-line prefer-const
-    let { _: funcnames, name, a, r, s, all, n } = parseArgs();
-
-    // eslint-disable-next-line no-multi-assign
-    if (all) a = r = s = true;
+    let { _: actions, name, n } = getArgs();
 
     // Check that the required flags are in
-    if (!funcnames.length) {
-      console.error('Action name(s) required');
-      process.exit(1);
-    }
     if (!name) {
-      console.error('--name flag required');
-      process.exit(1);
+      console.log('Filename is required');
+      name = await askQuestion('The filename, plz? ');
     }
 
-    const typenames = funcnames.map((str) => `${name.toUpperCase()}_${snakeCaseCap(str)}`);
+    if (!actions.length) {
+      console.log('At least, one action name is required');
+      const actionName = await askQuestion('Action name, plz? ');
+      actions.push(actionName);
+    }
 
     const filePath = path.join(__dirname, 'controllers', 'actions', `${name}.ts`);
-
     try {
+      // Check if the file exists
       fs.accessSync(filePath, fs.constants.R_OK | fs.constants.W_OK);
+      if (n) {
+        // The file exists; but option n is set
+        console.log('A file with the given name already exists');
+        const ans = await askQuestion('Do you want to overwrite it? [y/n] ');
+        if (ans !== 'y' && ans !== 'Y') process.exit(1);
+      }
     } catch (e) {
+      // Not existing, create a new file
       n = true;
     }
 
-    // Boilerplate Templates
+    // Select templates
     const actionTemplate = n
       ? path.join(__dirname, 'templates', 'action.ejs')
       : path.join(__dirname, 'templates', 'actionExtend.ejs');
@@ -61,20 +65,18 @@ const main = () => {
       ? path.join(__dirname, 'templates', 'actionSaga.ejs')
       : path.join(__dirname, 'templates', 'actionSagaExtend.ejs');
 
-    // Boilerplate Outputs
-    const data = { name, funcnames, typenames };
+    // Output
+    const typenames = actions.map((str) => `${name.toUpperCase()}_${snakeCaseCap(str)}`);
+    const data = { name: name, funcnames: actions, typenames };
     const flags = n ? 'w' : 'a';
-    if (a) renderEjs(actionTemplate, data, name, flags, 'actions');
-    if (r) renderEjs(reducerTemplate, data, `${name}Reducer`, flags, 'reducers');
-    if (s) renderEjs(sagaTemplate, data, `${name}Saga`, flags, 'sagas');
+    renderEjs(actionTemplate, data, name, flags, 'actions');
+    renderEjs(reducerTemplate, data, `${name}Reducer`, flags, 'reducers');
+    renderEjs(sagaTemplate, data, `${name}Saga`, flags, 'sagas');
 
-    if (a && n) console.log(`Created ${funcnames.length} action(s) for [${name}]`);
-    if (r && n) console.log(`Created a reducer file for [${name}]`);
-    if (s && n) console.log(`Created a saga file for [${name}]`);
-
-    if (a && !n) console.log(`Added ${funcnames.length} action(s) for [${name}]`);
-    if (r && !n) console.log(`Added ${funcnames.length} reducer(s) for [${name}]`);
-    if (s && !n) console.log(`Added ${funcnames.length} saga(s) for [${name}]`);
+    const verb = n ? 'Created' : 'Added';
+    console.log(verb, `${actions.length} action(s) for [${name}]`);
+    console.log(verb, `${actions.length} reducer(s) for [${name}]`);
+    console.log(verb, `${actions.length} saga(s) for [${name}]`);
   } catch (err) {
     console.error(err);
   }

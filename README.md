@@ -78,7 +78,6 @@ API_URL=http://api.domain.com
 - Redux middleware: Redux-saga
 - HTTP client: axios
 - JavaScript Testing Framework: Jest
-- User Agent detection script: Modernizr
 - Browser style normalization script: Normalize
 - Stylesheet preprocessor: SASS/SCSS
 - Stylesheet postprocessor: Postcss (included in NextJS)
@@ -149,13 +148,14 @@ node codegen-comp.js --name=myComponent --V
 
 ### Action Generator
 
-#### Creating new files
+#### Adding New Actions in a New File
 
 1. Create new file, `myNewAction.ts`, one for each action, reducer, saga by using `codegen-action.js`
 
+   action names should be in arguments as unnamed args (e.g. action1, action2, action3, moreActions)
+
    > ```shell
-   > # action names should be in arguments (e.g. action1, action2, action3, moreActions)
-   > node codegen-action.js --name=myNewAction action1 action2 action3 moreActions --all --n
+   > node codegen-action.js --name=myNewAction action1 action2 action3 moreActions
    > ```
 
 1. Add `myNewAction` into `index.ts` under actions directory
@@ -178,13 +178,14 @@ node codegen-comp.js --name=myComponent --V
    > const sagas: any[] = [requestSaga, existingActionSaga, myNewActionSaga];
    > ```
 
-#### Appending to the existing files
+#### Appending Actions to an Existing File
 
 1. Create new actions in `myNewAction.ts` by using `codegen-action.js`
 
+   Appending actions require the same filename which exists already in each folder
+
    > ```shell
-   > # action names should be in arguments (e.g. action1, action2, action3, moreActions)
-   > node codegen-action.js --name=myNewAction action1 action2 action3 moreActions --all
+   > node codegen-action.js --name=myNewAction action1 action2 action3 moreActions
    > ```
 
 ## Authors
@@ -193,4 +194,4 @@ node codegen-comp.js --name=myComponent --V
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
