@@ -1,6 +1,6 @@
 
-<%_ for(let i=0; i<funcnames.length; i++) {-%>
-case <%=name%>.const.<%=funcnames[i]%>:
+<%_ for(let i=0; i<actions.length; i++) {-%>
+case <%=name%>.const.<%=actions[i]%>:
   return {
     ...state,
   };

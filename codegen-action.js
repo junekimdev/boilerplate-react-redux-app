@@ -3,14 +3,20 @@ const path = require('path');
 const ejs = require('ejs');
 const { snakeCaseCap, getArgs, askQuestion } = require('./codegen-util');
 
-const renderEjs = (templateFile, data, outFilename, flags, outType) => {
-  ejs.renderFile(templateFile, data, {}, (err, str) => {
-    if (err) console.error(err);
+const write = (str, dir, filename, flags) => {
+  const filePath = path.join(__dirname, 'controllers', dir, `${filename}.ts`);
+  const writer = fs.createWriteStream(filePath, { flags });
+  writer.write(str);
+  writer.end();
+};
 
-    const filePath = path.join(__dirname, 'controllers', outType, `${outFilename}.ts`);
-    const writer = fs.createWriteStream(filePath, { flags });
-    writer.write(str);
-    writer.end();
+const renderEjs = (templateFile, data, dir, filename, flags) => {
+  ejs.renderFile(templateFile, data, {}, (err, str) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    write(str, dir, filename, flags);
   });
 };
 
@@ -52,6 +58,9 @@ const main = async () => {
     } catch (e) {
       // Not existing, create a new file
       n = true;
+      write(`export { default as ${name} } from './${name}';`, 'actions', 'index', 'a');
+      write(`import ${name} from './${name}Reducer';`, 'reducers', 'index', 'a');
+      write(`import ${name} from './${name}Saga';`, 'sagas', 'index', 'a');
     }
 
     // Select templates
@@ -67,11 +76,11 @@ const main = async () => {
 
     // Output
     const typenames = actions.map((str) => `${name.toUpperCase()}_${snakeCaseCap(str)}`);
-    const data = { name: name, funcnames: actions, typenames };
+    const data = { name, actions, typenames };
     const flags = n ? 'w' : 'a';
-    renderEjs(actionTemplate, data, name, flags, 'actions');
-    renderEjs(reducerTemplate, data, `${name}Reducer`, flags, 'reducers');
-    renderEjs(sagaTemplate, data, `${name}Saga`, flags, 'sagas');
+    renderEjs(actionTemplate, data, 'actions', name, flags);
+    renderEjs(reducerTemplate, data, 'reducers', `${name}Reducer`, flags);
+    renderEjs(sagaTemplate, data, 'sagas', `${name}Saga`, flags);
 
     const verb = n ? 'Created' : 'Added';
     console.log(verb, `${actions.length} action(s) for [${name}]`);

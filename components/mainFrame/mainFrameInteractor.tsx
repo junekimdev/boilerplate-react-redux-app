@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import Presenter from './mainFramePresenter';
-//import { useTypedSelector } from '../../controllers';
+//import { useReduxState } from '../../controllers';
 
 const Interactor = (props: { children?: ReactNode[] | ReactNode }) => {
   const { children } = props;

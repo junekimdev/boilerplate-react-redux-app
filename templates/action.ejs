@@ -1,16 +1,16 @@
-import { AxiosResponse } from 'axios';
-import {} from '../types';
+//import { AxiosResponse } from 'axios';
+//import {} from '../types';
 
 const <%=name%>Const = {
-<% for (let i=0; i<funcnames.length; i++) {-%>
-  <%=funcnames[i]%>: '<%=typenames[i]%>',
+<% for (let i=0; i<actions.length; i++) {-%>
+  <%=actions[i]%>: '<%=typenames[i]%>',
 <% } -%>
 };
 
 const <%=name%>Action = {
-<%_ for (let i=0; i<funcnames.length; i++) {-%>
-  <%=funcnames[i]%>: (payload?: any) => ({
-    type: <%=name%>Const.<%=funcnames[i]%>,
+<%_ for (let i=0; i<actions.length; i++) {-%>
+  <%=actions[i]%>: (payload?: any) => ({
+    type: <%=name%>Const.<%=actions[i]%>,
     payload,
   }),
 <%_ } -%>

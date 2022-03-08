@@ -7,4 +7,4 @@ const rootReducer = combineReducers({ placeholder });
 
 export default rootReducer;
 export type TSRoot = ReturnType<typeof rootReducer>;
-export const useTypedSelector = createSelectorHook<TSRoot, IAction>();
+export const useReduxState = createSelectorHook<TSRoot, IAction>();

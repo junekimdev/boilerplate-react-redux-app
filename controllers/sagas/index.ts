@@ -1,8 +1,8 @@
 import { all, spawn, call } from 'redux-saga/effects';
-import requestSaga from './requestSaga';
+import request from './requestSaga';
 
 const rootSaga = function* () {
-  const sagas: any[] = [requestSaga];
+  const sagas: any[] = [request];
 
   yield all(
     sagas.map((saga) =>
