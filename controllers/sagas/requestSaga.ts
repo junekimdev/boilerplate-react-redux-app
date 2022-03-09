@@ -3,7 +3,7 @@ import axios, { AxiosResponse, AxiosRequestConfig, AxiosError } from 'axios';
 import request from '../actions/request';
 import { IAction, IRequest } from '../types';
 
-const baseURL = process.env.API_URL || 'https://localhost:4000';
+const baseURL = process.env.API_URL || 'http://localhost:3000';
 
 const agent = axios.create({ baseURL });
 
