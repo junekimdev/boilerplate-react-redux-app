@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-// import Script from 'next/script';
 import Meta from '../components/meta';
 import MainFrame from '../components/mainFrame';
 
@@ -17,7 +16,6 @@ const Page = () => {
         desc="Template created by junekimdev"
         url={publicUrl}
       ></Meta>
-      {/* <Script src="/modernizr.js" type="text/javascript" strategy="beforeInteractive" /> */}
       <MainFrame></MainFrame>
     </>
   );
