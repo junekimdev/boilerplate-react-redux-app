@@ -4,20 +4,20 @@ This is boilerplate codes to quick-start a react app
 
 ## Table of Contents
 
-1. [Getting Started](#getting_-started)
+1. [Getting Started](#getting-started)
 1. [Tech Stack](#tech-stack)
 1. [Directory Structure](#directory-structure)
 1. [Code Generation](#code-generation)
-1. [Authors](#Authors)
-1. [License](#License)
+1. [Authors](#authors)
+1. [License](#license)
 
 ---
 
 ## Getting Started
 
-### Prerequisites
+### Prerequisite
 
-Install Node.js at least 14.x.x LTS
+Install latest Node.js LTS
 
 ```shell
 # Debian
@@ -29,7 +29,7 @@ nodejs -v
 choco install nodejs-lts
 ```
 
-### Installing
+### Installation
 
 Clone the repo and install dependencies
 
@@ -41,10 +41,10 @@ cd myAppName
 yarn
 ```
 
-Make sure to remove `.git` directory for a fresh new start
+Make sure to remove `.git` directory to start afresh
 
 ```shell
-# remove .git directory first
+# remove .git directory beforehand
 git init
 git add .
 git commit -m "Initial commit"
@@ -53,7 +53,7 @@ git remote add origin <myGitRepo>
 git push -u origin master
 ```
 
-Add a file `.env` that includes env var
+Add a file `.env` that includes environmental variables
 
 example
 
