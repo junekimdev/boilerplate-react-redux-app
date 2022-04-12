@@ -1,7 +1,7 @@
 {
   "name": "boilerplate-react-app",
   "description": "boilerplate codes to quick-start a react app",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "YOUR NAME",
   "license": "MIT",
   "private": true,
@@ -24,13 +24,13 @@
   },
   "devDependencies": {
     "@types/node": "^17.0.23",
-    "@types/react": "^18.0.0",
+    "@types/react": "^18.0.1",
     "@types/react-dom": "^18.0.0",
     "@types/react-redux": "^7.1.23",
-    "@typescript-eslint/eslint-plugin": "^5.18.0",
-    "@typescript-eslint/parser": "^5.18.0",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
     "ejs": "^3.1.6",
-    "eslint": "^8.12.0",
+    "eslint": "^8.13.0",
     "jest": "^27.5.1",
     "typescript": "^4.6.3"
   },
