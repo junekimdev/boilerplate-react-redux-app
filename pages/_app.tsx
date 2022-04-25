@@ -1,9 +1,7 @@
 import { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import './global.scss';
-import { configureStore } from '../controllers';
-
-const store = configureStore();
+import store from '../controllers/store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
