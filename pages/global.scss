@@ -31,7 +31,7 @@
 }
 
 // Smooth scroll
-@include pc {
+@include theme.pc {
   html {
     scroll-behavior: smooth;
 
@@ -71,7 +71,7 @@ ul {
 
 // Button class style
 .btn {
-  @include getBtn(var(--btn-bg-color), var(--btn-font-color), var(--btn-font-size));
+  @include theme.getBtn(var(--btn-bg-color), var(--btn-font-color), var(--btn-font-size));
 }
 
 // Underlined link style
