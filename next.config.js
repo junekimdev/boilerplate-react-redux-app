@@ -1,6 +1,4 @@
 module.exports = {
-  sass: true, // use .scss files
-  modules: true, // style.(m|module).css & style.(m|module).scss for module files
   // @see https://nextjs.org/docs/api-reference/next.config.js/environment-variables
   // This sets environment variable for SSR
   env: {
