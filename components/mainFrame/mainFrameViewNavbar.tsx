@@ -5,9 +5,7 @@ const View = () => {
   return (
     <nav className={styles.navbarVertical}>
       <Link href="/">
-        <a>
-          <i className="fas fa-home"></i>
-        </a>
+        <i className="fas fa-home"></i>
       </Link>
     </nav>
   );
