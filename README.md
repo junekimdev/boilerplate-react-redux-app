@@ -1,6 +1,6 @@
-# Boilerplate codes for React App
+# Boilerplate codes for React-Redux App
 
-This is boilerplate codes to quick-start a react app
+This is boilerplate codes to quick-start a React app with Redux
 
 ## Table of Contents
 
@@ -36,7 +36,7 @@ Clone the repo and install dependencies
 ```shell
 # git clone will create a directory named myAppName
 # if the directory is already created, then use .(dot) instead of myAppName
-git clone https://github.com/junekimdev/boilerplate-react-app.git <myAppName>
+git clone https://github.com/junekimdev/boilerplate-react-redux-app.git <myAppName>
 cd myAppName
 yarn
 ```
