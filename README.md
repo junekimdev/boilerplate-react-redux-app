@@ -1,5 +1,9 @@
 # Boilerplate codes for React-Redux App
 
+![release-version](https://img.shields.io/github/v/release/junekimdev/boilerplate-react-redux-app?display_name=tag)
+![last-commit](https://img.shields.io/github/last-commit/junekimdev/boilerplate-react-redux-app)
+![license](https://img.shields.io/github/license/junekimdev/boilerplate-react-redux-app)
+
 This is boilerplate codes to quick-start a React app with Redux
 
 ## Table of Contents
@@ -16,6 +20,10 @@ This is boilerplate codes to quick-start a React app with Redux
 ## Getting Started
 
 ### Prerequisite
+
+> `React` doesn't require `Node.js`
+>
+> `Node.js` is needed for code generators
 
 Install latest Node.js LTS
 
@@ -90,45 +98,51 @@ API_URL=http://api.domain.com
 
 ## Directory Structure
 
-Root  
-|-- components  
-|--|-- \_theme.scss  
-|--|-- eachComponent  
-|--|--|-- index.ts  
-|--|--|-- eachComponent.module.scss  
-|--|--|-- eachComponentInteractor.tsx  
-|--|--|-- eachComponentPresenter.tsx  
-|--|--|-- eachComponentViewName.tsx  
-|--|--|-- eachComponentType.tsx  
-|-- controllers  
-|--|-- index.ts  
-|--|-- store.ts  
-|--|-- apiURLs.ts  
-|--|-- actions  
-|--|--|-- index.ts  
-|--|--|-- eachAction.ts  
-|--|-- reducers  
-|--|--|-- index.ts  
-|--|--|-- eachReducer.ts  
-|--|-- sagas  
-|--|--|-- index.ts  
-|--|--|-- eachSaga.ts  
-|--|-- types  
-|--|--|-- index.ts  
-|--|--|-- eachTypes.ts  
-|-- pages  
-|--|-- index.ts  
-|--|-- \_app.tsx  
-|--|-- \_document.tsx  
-|--|-- global.scss  
-|-- public  
-|--|-- favicon.ico (similar files)  
-|--|-- robot.txt  
-|--|-- assets  
-|--|--|-- images  
-|--|--|--|-- eachImage.png  
-|-- templates  
-|--|-- eachCodeGenerationTemplate.ejs
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD037 -->
+<pre>
+Root
+├── components  
+    ├── _theme.scss  
+    └── eachComponent  
+        ├── index.ts  
+        ├── eachComponent.module.scss  
+        ├── eachComponentInteractor.tsx  
+        ├── eachComponentPresenter.tsx  
+        ├── eachComponentViewName.tsx  
+        └── eachComponentType.tsx  
+├── controllers  
+    ├── index.ts  
+    ├── store.ts  
+    ├── apiURLs.ts  
+    ├── actions  
+        ├── index.ts  
+        └── eachAction.ts  
+    ├── reducers  
+        ├── index.ts  
+        └── eachReducer.ts  
+    ├── sagas  
+        ├── index.ts  
+        └── eachSaga.ts  
+    └── types  
+        ├── index.ts  
+        └── eachTypes.ts  
+├── pages  
+    ├── _app.tsx  
+    ├── _document.tsx  
+    ├── index.ts  
+    └── global.scss  
+├── public  
+    ├── favicon.ico (similar files)  
+    ├── robot.txt  
+    └── assets  
+        └── images  
+            └── eachImage.png  
+├── templates  
+    └── eachCodeGenerationTemplate.ejs
+</pre>
+<!-- markdownlint-enable MD033 -->
+<!-- markdownlint-enable MD037 -->
 
 ## Code Generation
 
