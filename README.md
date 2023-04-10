@@ -73,7 +73,7 @@ API_URL=http://api.domain.com
 - Website client-side rendering framework: ReactJS
 - Website server-side rendering framework: NextJS
 - Package management: webpack (included in NextJS)
-- Transpiler: Babel (included in NextJS)
+- Transpiler: SWC (included in NextJS)
 - State management: Redux
 - Redux middleware: Redux-saga
 - HTTP client: axios
