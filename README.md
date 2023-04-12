@@ -21,10 +21,6 @@ This is boilerplate codes to quick-start a React app with Redux
 
 ### Prerequisite
 
-> `React` doesn't require `Node.js`
->
-> `Node.js` is needed for development
-
 Install latest Node.js LTS
 
 ```shell
