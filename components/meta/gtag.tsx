@@ -1,6 +1,6 @@
 import Script from 'next/script';
 
-const GTAG_ID = process.env.GTAG_ID || 'GTM-MXDVTH6';
+const GTAG_ID = process.env.NEXT_PUBLIC_GTAG_ID || 'GTM-MXDVTH6';
 const gtag = () => (
   <Script
     strategy="afterInteractive"
