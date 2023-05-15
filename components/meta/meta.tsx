@@ -1,16 +1,17 @@
 import Head from 'next/head';
-// import GTag from './gtag';
+import { useGTM } from './gtm';
 import { TMPropsMeta } from './metaType';
 
 const Meta = (props: TMPropsMeta) => {
   const orgName = 'junekimdev';
   const siteName = "another junekimdev's website";
-  const homeUrl = process.env.NEXT_PUBLIC_PUBLIC_URL || 'localhost:3000';
+  const homeUrl = process.env.NEXT_PUBLIC_URL || 'localhost:3000';
   const {
     image = `${homeUrl}/assets/images/LogoPlace_Extended_1200x627.png`,
     imageWidth = '1200',
     imageHeight = '627',
   } = props;
+  // useGTM();
 
   return (
     <Head>
