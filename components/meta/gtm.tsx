@@ -1,6 +1,7 @@
+// @ts-nocheck
 import { useEffect } from 'react';
 
-export const useGTM = (w, d, s, l, i) => {
+export const useGTM = () => {
   const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? 'GTM-MXDVTH6';
 
   useEffect(() => {
