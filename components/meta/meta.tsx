@@ -11,7 +11,7 @@ const Meta = (props: TMPropsMeta) => {
     imageWidth = '1200',
     imageHeight = '627',
   } = props;
-  // useGTM();
+  useGTM();
 
   return (
     <Head>

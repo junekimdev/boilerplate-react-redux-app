@@ -3,7 +3,7 @@ import { IAction } from '../types';
 
 const initialState = {};
 
-const reducer: Reducer<any, IAction> = (state = initialState, action) => {
+const reducer: Reducer<any, IAction> = (state = initialState, _action) => {
   return state;
 };
 
